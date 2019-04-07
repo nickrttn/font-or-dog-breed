@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Font or dog breed?</title>
+
+  <meta name="description" content="Font or dog breed? Because kerning a Schnauzer is impossible.">
+  <link rel="me" href="https://github.com/nickrttn" type="text/html">
+  <link rel="me" href="mailto:hello@nickrttn.me">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="apple-mobile-web-app-title" content="Font or dog breed?">
+  <meta name="application-name" content="Font or dog breed?">
+  <meta name="theme-color" content="#ffffff">
+
+  <link href="https://fonts.googleapis.com/css?family=Kalam:400,700" rel="stylesheet">
+  <style>
+    html {
+      box-sizing: border-box;
+      font-size: calc(1em + 0.5vw);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: inherit;
+    }
+
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: 'Kalam', cursive;
+    }
+
+    header {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      margin-bottom: 2em;
+    }
+
+    header img {
+      flex: 0 50%;
+      order: 1;
+      width: auto;
+      height: auto;
+      padding: .25em;
+      max-height: 10em;
+    }
+
+    header h1 {
+      flex: 1 100%;
+      text-align: center;
+      font-size: 1.75em;
+      font-weight: 800;
+    }
+
+    @media screen and (min-width: 44.75em) {
+      header {
+        flex-flow: nowrap;
+        margin-bottom: 0.5em;
+      }
+
+      header h1 {
+        max-width: 25ch;
+        flex: 2;
+      }
+
+      header img {
+        flex: 1;
+        order: 0;
+      }
+    }
+
+    main {
+      padding: 4vw;
+    }
+
+    form {
+      flex: 1;
+      padding: 2vw 4vw;
+      margin: 0;
+      overflow: hidden;
+      background-color: #A1D1A1;
+    }
+
+    fieldset {
+      border: 0;
+      padding: 0;
+    }
+
+    legend {
+      font-size: 1.5em;
+      line-height: 1.2;
+      text-align: center;
+      background-color: white;
+    }
+
+    [data-question] {
+      background-color: rgba(0, 0, 0, 0.05);
+      transition: transform 250ms ease;
+    }
+
+    [data-question].before {
+      transform: translateX(120%);
+    }
+
+    [data-question].after {
+      transform: translateX(-120%);
+    }
+
+    .hidden {
+      display: none;
+      visibility: hidden;
+    }
+
+    .question {
+      display: flex;
+      flex-flow: row wrap;
+      margin: 2em 0;
+      justify-content: center;
+    }
+
+    .question legend {
+      flex: 0 100%;
+      margin-bottom: .5em;
+      background: none;
+      font-size: 1.5em;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .input {
+      display: flex;
+      flex-flow: column-reverse nowrap;
+      margin-right: 1em;
+    }
+
+    .input label {
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    [data-template="score"] {
+      background-color: #A1D1A1;
+      padding: 2vw 4vw;
+      text-align: center;
+    }
+
+    [data-template="score"] h2 {
+      text-transform: uppercase;
+    }
+
+    [data-template="score"] p {
+      font-size: 4em;
+      line-height: 1;
+      margin: .25em 0 .5em;
+    }
+
+    [data-template="score"] span {
+      font-weight: 800;
+    }
+
+    table {
+      display: flex;
+      flex-flow: column nowrap;
+      font-size: 1em;
+    }
+
+    thead,
+    tbody {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+
+    tr {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+    }
+
+    th,
+    td {
+      flex: 1;
+      text-align: left;
+    }
+
+    a {
+      color: black;
+    }
+
+    button {
+      font-size: inherit;
+      font-family: inherit;
+      padding: .25vw .5vw;
+    }
+
+    [data-template="answers"] {
+      padding: 2vw 4vw;
+    }
+  </style>
+</head>
+
+<body>
+  <main data-template="quiz">
+    <header>
+      <img src="images/a.svg" alt="">
+      <h1>Because kerning a Schnauzer is impossible.</h1>
+      <img src="images/doggo.svg" alt="">
+    </header>
+    <form>
+      <fieldset>
+        <div>
+          <legend>font or dog breed?</legend>
+
+          <fieldset data-question="vizsla">
+            <div class="question">
+              <legend>Vizsla</legend>
+              <div class="input">
+                <input id="vizsla-font" value="font" name="vizsla" type="radio">
+                <label for="vizsla-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="vizsla-dog" value="dog" name="vizsla" type="radio">
+                <label for="vizsla-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="mastiff">
+            <div class="question">
+              <legend>Mastiff</legend>
+              <div class="input">
+                <input id="mastiff-font" value="font" name="mastiff" type="radio">
+                <label for="mastiff-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="mastiff-dog" value="dog" name="mastiff" type="radio">
+                <label for="mastiff-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="bulmer">
+            <div class="question">
+              <legend>Bulmer</legend>
+              <div class="input">
+                <input id="bulmer-font" value="font" name="bulmer" type="radio">
+                <label for="bulmer-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="bulmer-dog" value="dog" name="bulmer" type="radio">
+                <label for="bulmer-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="kaushan">
+            <div class="question">
+              <legend>Kaushan</legend>
+              <div class="input">
+                <input id="kaushan-font" value="font" name="kaushan" type="radio">
+                <label for="kaushan-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="kaushan-dog" value="dog" name="kaushan" type="radio">
+                <label for="kaushan-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="briard">
+            <div class="question">
+              <legend>Briard</legend>
+              <div class="input">
+                <input id="briard-font" value="font" name="briard" type="radio">
+                <label for="briard-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="briard-dog" value="dog" name="briard" type="radio">
+                <label for="briard-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="schwabacher">
+            <div class="question">
+              <legend>Schwabacher</legend>
+              <div class="input">
+                <input id="schwabacher-font" value="font" name="schwabacher" type="radio">
+                <label for="schwabacher-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="schwabacher-dog" value="dog" name="schwabacher" type="radio">
+                <label for="schwabacher-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="barbet">
+            <div class="question">
+              <legend>Barbet</legend>
+              <div class="input">
+                <input id="barbet-font" value="font" name="barbet" type="radio">
+                <label for="barbet-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="barbet-dog" value="dog" name="barbet" type="radio">
+                <label for="barbet-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="schipperke">
+            <div class="question">
+              <legend>Schipperke</legend>
+              <div class="input">
+                <input id="schipperke-font" value="font" name="schipperke" type="radio">
+                <label for="schipperke-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="schipperke-dog" value="dog" name="schipperke" type="radio">
+                <label for="schipperke-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="korinna">
+            <div class="question">
+              <legend>Korinna</legend>
+              <div class="input">
+                <input id="korinna-font" value="font" name="korinna" type="radio">
+                <label for="korinna-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="korinna-dog" value="dog" name="korinna" type="radio">
+                <label for="korinna-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset data-question="peignot">
+            <div class="question">
+              <legend>Peignot</legend>
+              <div class="input">
+                <input id="peignot-font" value="font" name="peignot" type="radio">
+                <label for="peignot-font">Font</label>
+              </div>
+              <div class="input">
+                <input id="peignot-dog" value="dog" name="peignot" type="radio">
+                <label for="peignot-dog">Dog</label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </fieldset>
+    </form>
+    <p>This was based on an
+      <a href="https://wronghands1.com/2017/10/27/font-or-dog-breed/">original comic</a> by John Atkinson.</p>
+  </main>
+  <script>
+
+    (function () {
+      'use strict';
+      // Attach DOM listeners on DOMContentLoaded
+      window.addEventListener('DOMContentLoaded', onload, { once: true });
+
+      function onload() {
+        var answers = {
+          font: ['bulmer', 'kaushan', 'schwabacher', 'korinna', 'peignot'],
+          dog: ['vizsla', 'mastiff', 'briard', 'barbet', 'schipperke']
+        };
+
+        var initialState = {
+          answers: [],
+          score: 0,
+          nextQuestion: 0
+        };
+
+        // Create a new game state
+        var store = createStore(initialState, reducer);
+
+        store.subscribe(displayNextQuestion);
+        store.subscribe(displayResults);
+
+        // Get the questions
+        var questions = Array.from(document.querySelectorAll('[data-question]'));
+
+        // Hide all but the first question
+        questions.forEach(function (question, idx) {
+          if (idx !== 0) {
+            question.classList.add('hidden');
+          }
+        });
+
+        // Listen for change events on the form
+        document.forms[0].addEventListener('change', answerQuestion, { passive: true });
+
+        function answerQuestion(evt) {
+          var question = evt.target.name;
+          var answer = evt.target.value;
+
+          store.dispatch({
+            type: 'ADD_ANSWER', answer: {
+              question: question,
+              answer: answer
+            }
+          });
+
+          if (answers[answer].includes(question)) {
+            store.dispatch({ type: 'INCREMENT_SCORE' });
+          }
+
+          store.dispatch({ type: 'NEXT_QUESTION' });
+        }
+
+        var currentQuestion = 0;
+
+        function displayNextQuestion(state) {
+          if (questions.length >= state.answers.length && currentQuestion !== state.nextQuestion) {
+            questions[currentQuestion].classList.add('after');
+
+            setTimeout(function () {
+              questions[currentQuestion].classList.add('hidden');
+            }, 250);
+
+            if (questions[state.nextQuestion]) {
+              questions[state.nextQuestion].classList.add('before');
+
+              setTimeout(function () {
+                questions[state.nextQuestion].classList.remove('hidden');
+                currentQuestion = state.nextQuestion;
+              }, 250)
+
+              setTimeout(function () {
+                questions[state.nextQuestion].classList.remove('before');
+              }, 275);
+            }
+          }
+        }
+
+        function displayResults(state) {
+          if (questions.length === state.answers.length) {
+            questions.forEach(function (fieldset) {
+              fieldset.classList.add('hidden');
+            });
+
+            if (!document.querySelector('[data-template="score"]')) {
+              document.querySelector('main').insertAdjacentHTML('beforeend', `
+                <div data-template="score">
+                  <h2>Your score</h2>
+                  <p><span>${state.score}</span> out of 10!</p>
+                  <p>${state.score <= 4 ? '😞' : state.score <= 7 ? '🙂' : '🤘'}</p>
+                  <button data-toggle="answers">Give me the answers!</button>
+                </div >
+              `);
+            }
+
+            document.querySelector('button[data-toggle="answers"]').addEventListener('click',
+              displayAnswers, { passive: true, once: true }
+            );
+          }
+        }
+
+        function displayAnswers() {
+          document.querySelector('main').insertAdjacentHTML('beforeend', `
+            <div data-template="answers">
+              <h2>Answers</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fonts</th>
+                    <th>Dogs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="https://www.linotype.com/193/bulmer-family.html">Bulmer</a></td>
+                    <td><a href="https://en.wikipedia.org/wiki/Vizsla">Vizsla</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="http://www.impallari.com/kaushan">Kaushan</a></td>
+                    <td><a href="https://en.wikipedia.org/wiki/Mastiff">Mastiff</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://en.wikipedia.org/wiki/Schwabacher">Schwabacher</a></td>
+                    <td><a href="https://en.wikipedia.org/wiki/Briard">Briard</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://www.fonts.com/findfonts/hiddengems/itc%20korinna.htm">Korinna</a></td>
+                    <td><a href="https://en.wikipedia.org/wiki/Barbet_(dog)">Barbet</a></td>
+                  </tr>
+                  <tr>
+                    <td><a href="https://www.linotype.com/1328/peignot-family.html">Peignot</a></td>
+                    <td><a href="https://en.wikipedia.org/wiki/Schipperke">Schipperke</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          `);
+        }
+      }
+
+      function reducer(state, action) {
+        switch (action.type) {
+          case 'INCREMENT_SCORE':
+            return Object.assign({}, state, { score: state.score + 1 })
+          case 'ADD_ANSWER': {
+            var newAnswers = state.answers.slice(0);
+            newAnswers.push(action.answer);
+
+            return Object.assign({}, state, {
+              answers: newAnswers
+            });
+          }
+          case 'NEXT_QUESTION': {
+            return Object.assign({}, state, {
+              nextQuestion: state.nextQuestion + 1
+            });
+          }
+          default: {
+            return state;
+          }
+        }
+      }
+
+      function createStore(initialState, reducer) {
+        var state = initialState;
+        var listeners = [];
+
+        function subscribe(listener) {
+          listeners.push(listener);
+
+          return function unsubscribe() {
+            var index = listeners.indexOf(listener);
+            listeners.splice(index, 1);
+          }
+        }
+
+        function dispatch(action) {
+          state = reducer(state, action);
+          listeners.forEach(function (listener) {
+            listener.call(this, state);
+          });
+        }
+
+        return { dispatch: dispatch, subscribe: subscribe };
+      }
+    }());
+
+  </script>
+</body>
+
+</html>

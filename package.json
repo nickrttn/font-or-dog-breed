@@ -1,0 +1,14 @@
+{
+  "name": "font-or-dog-breed",
+  "version": "1.0.0",
+  "description": "Font or dog breed? Because kerning a Schnauzer is impossible.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "browser-sync start --config bs-config.js"
+  },
+  "author": "Nick Rutten <hello@nickrttn.me>",
+  "license": "MIT",
+  "dependencies": {
+    "browser-sync": "^2.18.13"
+  }
+}
